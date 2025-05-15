@@ -71,6 +71,6 @@ This is a **Food Ordering API** service built with Node.js and MongoDB. It allow
 - This API is designed for educational purposes and does not include production-level security or input validation.
 ## Project info
 
-This is a school project making a RESTful API design and Mongoose.
+This is a school project making a RESTful API design using Mongoose.
 
 Made by me, Lukas :)
