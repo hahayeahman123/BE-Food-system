@@ -1,4 +1,4 @@
-const Order = require('../modules/orderSchema.JS');
+const Order = require('../Schemas/orderSchema.JS');
 const jwt = require("jsonwebtoken");
 
 // creates an order

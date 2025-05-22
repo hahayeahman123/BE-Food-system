@@ -1,6 +1,6 @@
-const Food = require('../modules/foodSchema.js');
-const Store = require("../modules/storeSchema");
-const Menu = require("../modules/menuSchema");
+const Food = require('../Schemas/foodSchema.js');
+const Store = require("../Schemas/storeSchema");
+const Menu = require("../Schemas/menuSchema");
 
 
 // creates a food listing
@@ -26,6 +26,43 @@ exports.createFood = async (req, res) => {
         })
     }
 };
+
+exports.getFoods = async (req, res) => {
+    try{
+        const food = await Food.find();
+
+        res.status(200).json({
+            status: 'success',
+            data: food
+        })
+
+    }catch(err){
+        res.status(400).json({
+            status: 'failed',
+            error: err.message
+        })
+    }
+}
+
+// gets a food by its specific id
+exports.getFood = async (req, res) => {
+    try{
+        const food = await Food.findById(req.params.id);
+        console.log(req.params.id);
+        res.status(200).json({
+            status: "success",
+            data:{
+                food
+            }
+        })
+    }catch(err){
+        res.status(400).json({
+            status: 'failed',
+            error: err.message
+        })
+    }
+}
+
 
 // update a specific food by its _id
 

@@ -1,5 +1,5 @@
-const Menu = require('./../modules/menuSchema.js');
-const Food = require('./../modules/foodSchema.js');
+const Menu = require('../Schemas/menuSchema.js');
+const Food = require('../Schemas/foodSchema.js');
 const mongoose = require('mongoose');
 
 
@@ -80,7 +80,7 @@ exports.getMenu = async (req, res) => {
         });
     } catch (err) {
         res.status(400).json({
-            status: 'fail',
+            status: 'failed',
             message: err.message,
         });
     }

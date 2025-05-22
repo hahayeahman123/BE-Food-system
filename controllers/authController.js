@@ -1,5 +1,5 @@
 const { existsSync } = require('fs');
-const User = require('../modules/userSchema.js');
+const User = require('../Schemas/userSchema.js');
 const jwt = require('jsonwebtoken');
 const {promisify} = require('util');
 
@@ -13,7 +13,6 @@ exports.signup = async (req, res)=>{
     try{
         const newUser = await  User.create({
             name: req.body.name,
-            role: req.body.role,
             password: req.body.password,
             passwordConfirm: req.body.passwordConfirm
         });
@@ -46,7 +45,7 @@ exports.login = async (req, res)=>{
         // 2.Check is user and password correct
         const user = await User.findOne({name}).select('+password');
         if(!user || !(await user.correctPassword(password, user.password))){
-            throw new Error("Incorrect password or email");
+            throw new Error("Incorrect password or username");
         }
         const token = signToken(user.id);
         //3. If everything is ok, send token to client
@@ -100,7 +99,7 @@ exports.protect = async (req,res, next) =>{
 }
 
 //  I stole this code from my teacher, if he reads this, labuka :D
-exports.restrictTo = (...roles) => {
+/*exports.restrictTo = (...roles) => {
     return (req, res, next) => {
         if (!roles.includes(req.user.role)) {
             return res.status(403).json({
@@ -111,4 +110,4 @@ exports.restrictTo = (...roles) => {
             next()
         }
     }
-}
+}*/

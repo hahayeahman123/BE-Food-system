@@ -1,26 +1,21 @@
-const app = require('./app');
 const dotenv = require('dotenv');
 const mongoose = require('mongoose');
+const cors = require('cors');
+const app = require('./app');
 
-dotenv.config({path:'./config.env'})
+dotenv.config({ path: './config.env' });
 
-// connect to database
 
-const DB = process.env.DATABASE.replace('<db_password>', process.env.DATABASE_PASSWORD) // create the database line, its safer this way
 
+// Connect to DB
+const DB = process.env.DATABASE.replace('<db_password>', process.env.DATABASE_PASSWORD);
 mongoose
-    .connect(DB, {
-        useNewUrlParser: true
-    })
-    .then(()=>{
-        console.log("DB successfully connected to MongoDB");
-    })
-// how to start server:
+    .connect(DB, { useNewUrlParser: true })
+    .then(() => console.log("DB successfully connected to MongoDB"));
 
-const port = process.env.PORT;
 
-app.get('/',(req,res)=>{res.send('Hello World!');});
-
-app.listen(port, ()=>{
+// Start server
+const port = process.env.PORT || 8888;
+app.listen(port, () => {
     console.log(`Server started, listening on ${port}`);
-})
+});

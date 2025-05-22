@@ -1,4 +1,4 @@
-const Store = require('./../modules/storeSchema.js');
+const Store = require('../Schemas/storeSchema.js');
 
 // create a new Store
 exports.createStore = async (req, res) => {
