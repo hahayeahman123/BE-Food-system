@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # Food Ordering API Service
 
 This is a **Food Ordering API** service built with Node.js and MongoDB. It allows different user roles (Admins and basic Users) to interact with restaurants, menus, food items, and orders.
